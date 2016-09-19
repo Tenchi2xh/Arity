@@ -5,7 +5,7 @@ import inspect
 import textwrap
 
 
-def tail_recursive(function):
+def tail_recursive(function, debug=False):
     """Optimizes functions that are tail recursive
     
     Transforms the body of the function into a while loop where
@@ -105,7 +105,6 @@ def tail_recursive(function):
                     recursive_calls += 1
             else:
                 calls = list(search(elem, ast.Call))
-                print(ast.dump(elem))
                 recursions = sum(1 if is_recursion(e) else 0 for e in calls)
                 if recursions > 0 and type(elem.value) != ast.Call:
                     return False
@@ -124,6 +123,10 @@ def tail_recursive(function):
         )
         function_def.body = [while_wrapper]
         fixed = ast.fix_missing_locations(ast_tree)
+
+        if debug:
+            import astunparse
+            print(astunparse.unparse(fixed))
 
         code_object = compile(fixed, "<string>", "exec")
         exec(code_object, caller_scope)
