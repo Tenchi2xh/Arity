@@ -1,1 +1,1 @@
-PYTHONPATH=. pytest test -v --cov-report term-missing --cov=arity
+PYTHONPATH=. pytest tests -v --cov-report term-missing --cov=arity
