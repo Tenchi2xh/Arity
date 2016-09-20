@@ -2,7 +2,7 @@
 
 import pytest
 
-from arity.decorators import *
+from arity.decorators import tail_recursive
 
 
 def test_tail_recursion_detection():

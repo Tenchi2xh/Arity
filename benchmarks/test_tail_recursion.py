@@ -3,7 +3,7 @@
 import random
 import pytest
 
-from arity.decorators import *
+from arity.decorators import tail_recursive
 
 
 def factorial(n, accu=1):
