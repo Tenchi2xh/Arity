@@ -4,7 +4,6 @@ try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
-from os.path import join, dirname
 
 
 setup(

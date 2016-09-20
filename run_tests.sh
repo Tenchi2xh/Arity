@@ -1,3 +1,5 @@
+#!/bin/sh
+
 PYTEST=pytest
 if ! type -P "$PYTEST" > /dev/null; then
   PYTEST=py.test

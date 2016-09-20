@@ -7,7 +7,7 @@ import textwrap
 
 def tail_recursive(function, debug=False):
     """Optimizes functions that are tail recursive
-    
+
     Transforms the body of the function into a while loop where
     recursive calls are transformed into assignments against the
     function parameters. Example:
@@ -64,7 +64,7 @@ def tail_recursive(function, debug=False):
         def visit_Return(self, node):
             if type(node.value) == ast.Call:
                 call = node.value
-                if is_recursion(call):  
+                if is_recursion(call):
                     values = call.args
                     return ast.Assign(
                         targets=[ast.Tuple(elts=function_params, ctx=ast.Store())],

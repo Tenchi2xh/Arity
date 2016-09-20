@@ -41,10 +41,10 @@ def test_tail_recursion_detection():
 def test_tail_recursion_optimization():
     import inspect
     reference = len(inspect.stack())
-    
+
     def foo(n):
         if n == 1:
-            return len(inspect.stack()) 
+            return len(inspect.stack())
         else:
             return foo(n-1)
 
