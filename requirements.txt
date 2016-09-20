@@ -1,4 +1,7 @@
-pytest
 forbiddenfruit
 astunparse
+pytest
+pytest-coverage
+pytest-benchmark
+
 
