@@ -19,6 +19,7 @@
 - [ ] Immutable collections
 - [ ] Streams
 - [ ] Curse existing ones
+- [ ] Curse numbers to add to and until etc.
 - [ ] Uniform map/reduce/etc.
 - [ ] Iterator helpers
 - [ ] Two flavours: pythonic and chained

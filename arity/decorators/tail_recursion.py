@@ -24,7 +24,9 @@ def tail_recursive(function, debug=False):
             if n <= 1: return accu
             else:      n, accu = n-1, n*accu
     """
-    source = inspect.getsource(function)
+    string_mode = not callable(function)
+
+    source = function if string_mode else inspect.getsource(function)
     ast_tree = ast.parse(textwrap.dedent(source))
 
     # Decorator should only work on function definitions
@@ -56,7 +58,7 @@ def tail_recursive(function, debug=False):
     class TransformRecursionCalls(ast.NodeTransformer):
         """
         Transforms recursive calls into tuple assignments
-        
+    
         return factorial(n-1, n*accu)
         becomes
         n, accu = n-1, n*accu
@@ -127,6 +129,10 @@ def tail_recursive(function, debug=False):
         if debug:
             import astunparse
             print(astunparse.unparse(fixed))
+
+        if string_mode:
+            import astunparse
+            return astunparse.unparse(fixed).strip()
 
         code_object = compile(fixed, "<string>", "exec")
         exec(code_object, caller_scope)
