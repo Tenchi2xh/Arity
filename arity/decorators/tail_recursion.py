@@ -120,10 +120,10 @@ def tail_recursive(function, debug=False):
     if is_tailrec(function_def):
         while_wrapper = ast.While(
             test=ast.Name(id='True', ctx=ast.Load()),
-            body=[replace_recursions(expr) for expr in function_def.body],
+            body=function_def.body,
             orelse=[]
         )
-        function_def.body = [while_wrapper]
+        function_def.body = [replace_recursions(while_wrapper)]
         fixed = ast.fix_missing_locations(ast_tree)
 
         if debug:
