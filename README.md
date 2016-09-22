@@ -12,3 +12,5 @@
 Functional programming suite for Python with a single import
 
 ---
+
+(README content pending, [TODO list](TODO.md))
